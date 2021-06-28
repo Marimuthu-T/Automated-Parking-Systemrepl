@@ -1,61 +1,13 @@
-class EntryCounter
+class EntryExitCounter
 {
-    var counter: EntryExit! 
-	var homeString = """
-
-                                       -Home-   
-                         1 -> Vehicle IN
-                         2 -> Vehicle Out
-                         3 -> Other Options
-                         4 -> Exit
-        """
-
-    var vehicleTypeString = """
-
-                                       -Enter Your Vehicle Type-   
-                        1 -> bycycle  
-                        2 -> bike
-                        3 -> car
-                        4 -> van
-                        5 -> bus
-        """
-
-
+    var entryExitCounter: EntryExitController! 
     init(){
-        print(" -----------------------WELCOME TO AUTO PARKER-----------------------------")
+        print(WelcomeString().welcome)
         do
 		{
-			self.counter = EntryExit()
+			self.entryExitCounter = EntryExitController()
 		}
-    }
-
-
-    func welcome()
-    {
-        print(homeString) 
-        if let choice = Int(readLine() ?? "4")
-        {
-            switch choice
-            {
-                case 1:
-                vehicleIn()
-                case 2:
-                vehicleOut()
-                case 3:
-                others()
-                case 4:
-                print("  ---------------------  Thank You -----------------------")
-                return 
-                default:
-                return welcome()
-            }
-            welcome()
-        }
-        else{
-            print("Enter Proper Input")
-            welcome()
-        }
-    }
+    }  
 
     func vehicleIn()
     {
@@ -63,7 +15,7 @@ class EntryCounter
         var vehicleNumber: String!
         var driverName: String!
 
-        print(vehicleTypeString)
+        print(WelcomeString().vehicleTypeString)
         if let givenVehicletype = Int(readLine() ?? "k")
         {
             switch givenVehicletype
@@ -107,7 +59,7 @@ class EntryCounter
         }
 
 
-        self.counter.entry(vehicleType: vehicleType, vehicleNumber: vehicleNumber , vehicleName: "car" ,driver: driverName )            
+        self.entryExitCounter.entry(vehicleType: vehicleType, vehicleNumber: vehicleNumber , vehicleName: "car" ,driver: driverName )            
     }
 
     func vehicleOut()
@@ -115,7 +67,7 @@ class EntryCounter
         print("Enter Your RegisterID")
         if let RegisterID = Int(readLine() ?? "Not")
         {
-        self.counter.out(registerId: RegisterID)
+        self.entryExitCounter.out(registerId: RegisterID)
         }
         else
         {

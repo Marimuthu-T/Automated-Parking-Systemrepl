@@ -1,1 +1,1 @@
-EntryCounter().welcome()
+Welcome().welcome()

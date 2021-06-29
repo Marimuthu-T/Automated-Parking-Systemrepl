@@ -5,7 +5,7 @@ class EntryExitCounter
         print(WelcomeString().welcome)
         do
 		{
-			self.entryExitCounter = EntryExitController()
+			self.entryExitCounter = EntryExitController() 
 		}
     }  
 

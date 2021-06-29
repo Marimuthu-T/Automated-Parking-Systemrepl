@@ -7,11 +7,10 @@ import Foundation
 
 class InOutRegister
 {
-    var RegisterId: String!
-    var vehicle: VehicleDetails!
-    var driver: String!
-    var inTime: Date!
-    var outTime: Date!
+    var vehicle: VehicleDetails = VehicleDetails()
+    var driver: String = "Not SET"
+    var inTime: Date?
+    var outTime: Date?
     var totalTime: TimeInterval?
     var Amount : Double?
     var vehicleIn: Bool = false
@@ -47,7 +46,12 @@ class InOutRegister
      
     public func totalTimeCalculator()
     {
-        self.totalTime = outTime.timeIntervalSince(inTime)
+		guard outTime != nil && inTime != nil
+		else{
+			print("Error in in out time")
+			return
+		}
+        self.totalTime = outTime!.timeIntervalSince(inTime!)
         self.Amount = totalTime! * 5.00
     }    
 }

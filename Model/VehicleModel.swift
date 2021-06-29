@@ -1,7 +1,12 @@
 public class VehicleDetails
 {
-    let vehicleName: String!
-    let vehicleNumber: String!
+    var vehicleName: String = "Not SEt"
+    var vehicleNumber: String = "Not Set"
+
+	init()
+	{
+		
+	}
 
     public init(vehicleNumber: String , vehicleName: String )
     {

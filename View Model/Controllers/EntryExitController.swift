@@ -1,4 +1,4 @@
-
+import Foundation
 
 func SearchWithID()
 {
@@ -48,12 +48,13 @@ struct EntryExitController
                 waitingVehicle.parkedSlot = park(vehicle: waitingVehicle.vehicleType.rawValue , id: registerSingleton.registerId)
                 if waitingVehicle.parkedSlot != nil
                 {
+					waitingVehicle.inTime = Date()
                     print("VehicleParkedIn")
                     print("Floor: \(waitingVehicle.parkedSlot.floor + 1) Row: 1 line: \(waitingVehicle.parkedSlot.line + 1)") 
                     printslot(Floor: waitingVehicle.parkedSlot.floor)
 					self.registerSingleton.register.updateValue(waitingVehicle, forKey:registerSingleton.registerId )  
                     registerSingleton.registerId = registerSingleton.registerId + 1
-                    print("Waiting List Vehicle  parked \n   VehicleNumber: \(waitingVehicle.vehicle.vehicleNumber!)")
+                    print("Waiting List Vehicle  parked \n   VehicleNumber: \(waitingVehicle.vehicle.vehicleNumber)")
 					registerSingleton.WaitingList.remove(at: index)
 					index -= 1
 				}

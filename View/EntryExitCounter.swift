@@ -2,20 +2,16 @@ class EntryExitCounter
 {
     var entryExitCounter: EntryExitController! 
     init(){
-        print(WelcomeString().welcome)
-        do
-		{
-			self.entryExitCounter = EntryExitController() 
-		}
+        self.entryExitCounter = EntryExitController()
     }  
 
     func vehicleIn()
     {
-        var vehicleType: VehicleType!
-        var vehicleNumber: String!
-        var driverName: String!
+        var vehicleType: VehicleType = .car
+        var vehicleNumber: String = "Not Set"
+        var driverName: String = "Not Set"
 
-        print(WelcomeString().vehicleTypeString)
+        print(Messages().vehicleTypeString)
         if let givenVehicletype = Int(readLine() ?? "k")
         {
             switch givenVehicletype
@@ -36,26 +32,29 @@ class EntryExitCounter
         }
         else
         {
-            print("Enter proper Vehicle Type ")
+            print(Messages.input.wrongInput("VehicleType"))
             return 
         }
 
 
-        print("       Enter Your Vehicle Number      ")
+        print(Messages.input.vehicleNumber.rawValue)
         if let givenVehicleNumber = readLine()
         {
             vehicleNumber = givenVehicleNumber
         }
         else{
-            print("Enter Proper Name")
+            print(Messages.input.wrongInput("vehicleNumber"))
         }
-        print("Enter Driver Name")
+        print(Messages.input.vehicleName.rawValue)
+
+
         if let givenDriverName = readLine()
         {
             driverName = givenDriverName
         }
-        else{
-            print("Enter Proper Name")
+        else
+		{
+            print(Messages.input.wrongInput("DriverName"))
         }
 
 
@@ -64,25 +63,20 @@ class EntryExitCounter
 
     func vehicleOut()
     {
-        print("Enter Your RegisterID")
+        print(Messages.input.registerID.rawValue)
         if let RegisterID = Int(readLine() ?? "Not")
         {
         self.entryExitCounter.out(registerId: RegisterID)
         }
         else
         {
-            print("Enter proper RegisterID")
+            print(Messages.input.wrongInput("RegisterID"))
         }
     }
 
     func others()
     {
-        print("""
-                         1 -> PrintSlot
-                         2 -> InList
-                         3 -> OutList
-                         4 -> Exit
-        """)
+        print(Messages().otherOptions)
         if let choice = Int(readLine() ?? "4")
         {
             switch choice

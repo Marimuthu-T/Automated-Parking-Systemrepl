@@ -57,6 +57,7 @@ struct EntryExitController
                     registerSingleton.registerId = registerSingleton.registerId + 1
                     print("Waiting List Vehicle  parked \n   VehicleNumber: \(waitingVehicle.vehicle.vehicleNumber!)")
 					registerSingleton.WaitingList.remove(at: index)
+					index -= 1
 				}
             }
 			index += 1

@@ -5,8 +5,6 @@ func SearchWithID()
     
 }
 
-
-
 struct EntryExitController
 {
 	let registerSingleton = RegisterModel.shared()
